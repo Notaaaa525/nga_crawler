@@ -9,6 +9,7 @@ import sys
 import tempfile
 import unittest
 from argparse import Namespace
+from datetime import datetime
 from pathlib import Path
 from unittest import mock
 
@@ -244,7 +245,15 @@ class ParseLoopTest(unittest.TestCase):
         self.assertIn("TID: 123", output)
         self.assertIn("=" * 80, output)
         self.assertIn("===== 第 0 楼 | 楼主甲 | 2024-04-12 11:27 =====", output)
-        self.assertIn("抓取时间: 2026-10-23 12:00:00 ~ 2026-10-23 12:00:00", output)
+        # 抓取时间按本机时区展示，测试不硬编码时区（CI 的 Windows runner 是 UTC）
+        expected_fetched = (
+            datetime.fromisoformat("2026-10-23T12:00:00+08:00")
+            .astimezone()
+            .strftime("%Y-%m-%d %H:%M:%S")
+        )
+        self.assertIn(
+            f"抓取时间: {expected_fetched} ~ {expected_fetched}", output
+        )
         self.assertIn("parser_version: 1.0.0", output)
         self.assertNotIn("deadbeef", output)  # req_id 不展示
         self.assertEqual(output.count("===== 第 0 楼"), 2)
