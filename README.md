@@ -103,6 +103,9 @@ python main.py parse --tid <tid> --pages 1-10
 
 直接双击 `run.bat`（或在项目目录执行），用键盘选择操作：
 
+> `run.bat` 只做「探测 Python → 启动 `menu.py`」；菜单文案与操作逻辑都在 Python 中，
+> 避免 `cmd.exe` 解析 UTF-8 批处理时对中文的截断问题（旧版曾出现菜单行被当成命令执行）。
+
 | 编号 | 功能 | 编号 | 功能 |
 |---|---|---|---|
 | 1 | 抓取整帖 | 8 | 查看版本 |
@@ -236,7 +239,8 @@ nga_crawler/
 ├── nga_parser.py           # 纯函数：cache → ParsedPage（避免与 3.8/3.9 内置 parser 冲突）
 ├── render.py               # 纯函数：ParsedPage → TXT
 ├── log.py                  # 日志轮转、req_id、脱敏
-├── run.bat                 # Windows 快捷菜单
+├── run.bat                 # Windows 启动器（探测 Python 后运行 menu.py）
+├── menu.py                 # 交互菜单（中文菜单与操作逻辑）
 ├── config/                 # 凭据 / 目标 / 运行参数
 ├── tests/                  # 离线单元测试与 fixtures
 ├── docs/                   # 维护记录
