@@ -1,4 +1,5 @@
 # NGA 特化爬虫（nga_crawler）
+
 > 99%基于DeepseekHarness开发。
 > 面向 NGA 单帖的**两阶段爬虫**：先按页抓取并缓存原始 JSON，再离线解析、导出可阅读的 TXT。
 > 仅依赖 Python 3.8+ 标准库，无需安装任何第三方包。
@@ -7,6 +8,7 @@
 ![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)
 ![Tests](https://img.shields.io/badge/tests-183%20passing-brightgreen)
 ![Platform](https://img.shields.io/badge/platform-cross--platform-lightgrey)
+![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey)
 
 ## 简介
 
@@ -43,7 +45,7 @@ NGA 的帖子页接口在带 `__output=11` 时返回结构化 JSON。本项目�
 ### 1. 获取代码
 
 ```bash
-git clone <你的仓库地址> nga_crawler
+git clone https://github.com/Notaaaa525/nga_crawler.git
 cd nga_crawler
 ```
 
@@ -238,6 +240,7 @@ nga_crawler/
 ├── config/                 # 凭据 / 目标 / 运行参数
 ├── tests/                  # 离线单元测试与 fixtures
 ├── docs/                   # 维护记录
+├── LICENSE                 # CC BY-NC-SA 4.0 许可
 ├── .env.example
 ├── .gitignore
 ├── .gitattributes
@@ -298,9 +301,16 @@ NGA 每页 20 楼，默认 2 秒/页；可用 `--max-pages` 控量、分多次�
 欢迎 Issue / PR。提交前请：
 
 1. 运行 `python -m unittest discover -s tests -t .` 并保证全绿；
-2. 保持既有边界：`crawler` 不做业务字段提取，`parser`/`render` 不触网、不读写文件；
+2. 保持既有边界：`crawler` 不做业务字段提取，`nga_parser`/`render` 不触网、不读写文件；
 3. 若调整站点字段解析，请同步更新 `tests/fixtures/` 与测试。
 
 ## 许可证
 
-本项目尚未添加开源许可证。在补充 `LICENSE` 之前，默认保留所有权利；如需使用或分发，请先联系维护者。
+本项目采用 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International（CC BY-NC-SA 4.0）](https://creativecommons.org/licenses/by-nc-sa/4.0/) 协议，完整法律文本见 [LICENSE](LICENSE)。
+
+- **BY（署名）**：复制、分发或改编时须注明原作者与来源；
+- **NC（非商业）**：不得将本项目或其衍生作品用于商业目的；
+- **SA（相同方式共享）**：改编后的作品须以相同协议发布。
+
+> 说明：带「非商业」条款的协议不属于 OSI 定义的「开源（Open Source）」——OSI 开源定义允许商业使用。因此本项目更准确的说法是「源码可用（source-available）」。
+> 若需要真正意义上的开源协议，可改为 MIT / Apache-2.0；若希望在允许商用的同时约束网络服务提供方，可考虑 AGPL-3.0。
