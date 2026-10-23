@@ -1,5 +1,5 @@
 # NGA 特化爬虫（nga_crawler）
-
+> 99%基于DeepseekHarness开发。
 > 面向 NGA 单帖的**两阶段爬虫**：先按页抓取并缓存原始 JSON，再离线解析、导出可阅读的 TXT。
 > 仅依赖 Python 3.8+ 标准库，无需安装任何第三方包。
 
