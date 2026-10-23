@@ -1,0 +1,23 @@
+{
+  "tid": 456,
+  "page": 1,
+  "url": "https://bbs.nga.cn/read.php?tid=456&page=1&__output=11",
+  "fetched_at": "2026-10-23T13:00:00+08:00",
+  "status": "ok",
+  "req_id": null,
+  "page_type": "thread",
+  "total_pages": null,
+  "current_page": 1,
+  "next_url": null,
+  "fetcher_version": "1.0.0",
+  "content": {
+    "source": "json",
+    "data": {
+      "__T": {},
+      "__R": [
+        {}
+      ],
+      "__U": {}
+    }
+  }
+}

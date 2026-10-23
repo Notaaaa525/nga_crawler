@@ -1,0 +1,68 @@
+{
+  "tid": 123,
+  "page": 1,
+  "url": "https://bbs.nga.cn/read.php?tid=123&page=1&__output=11",
+  "fetched_at": "2026-10-23T12:34:56+08:00",
+  "status": "ok",
+  "req_id": "123-1-abc123",
+  "page_type": "thread",
+  "total_pages": 2,
+  "current_page": 1,
+  "next_url": "https://bbs.nga.cn/read.php?tid=123&page=2&__output=11",
+  "fetcher_version": "1.0.0",
+  "content": {
+    "source": "json",
+    "data": {
+      "__T": {
+        "subject": "[b][写作][/b] [短篇] 测试帖\n第二行",
+        "authorid": 10001,
+        "author": "楼主先生",
+        "replies": 2,
+        "locked": 0
+      },
+      "__R": [
+        {
+          "lou": 0,
+          "pid": 900000001,
+          "authorid": 10001,
+          "author": "楼主先生",
+          "subject": "",
+          "content": "【[写作] [短篇] 测试帖】\n这是主楼正文第一段。\n\n[quote]引用内容第一行\n引用内容第二行[/quote]\n[img]./mon_202404/12/abc.jpg[/img]\n[url=https://bbs.nga.cn/read.php?tid=999]站内链接[/url]\n[pid=900000002,1]回复[/pid] 这是对二楼的回复。\n\n本帖最后由 楼主先生 于 2024-04-12 11:30 编辑",
+          "postdate": "2024-04-12 11:27",
+          "postdatetimestamp": 1712892420
+        },
+        {
+          "lou": 1,
+          "pid": 900000002,
+          "authorid": 10002,
+          "subject": "",
+          "content": "[quote]引用内容第一行\n引用内容第二行[/quote]二楼回复：作者字段缺失，用 __U 补全；发帖时间也缺失。",
+          "postdate": null,
+          "postdatetimestamp": null
+        },
+        {
+          "lou": 2,
+          "pid": 900000003,
+          "authorid": 10003,
+          "subject": "",
+          "content": "三楼正文：作者字段缺失且 __U 中没有记录。",
+          "postdate": "2024-04-12 11:35",
+          "postdatetimestamp": 1712892900
+        }
+      ],
+      "__U": {
+        "10001": {
+          "username": "楼主先生",
+          "nickname": "楼主先生"
+        },
+        "10002": {
+          "username": "二楼用户",
+          "nickname": "二楼用户"
+        }
+      },
+      "__ROWS": 3,
+      "__PAGE": 1,
+      "__R__ROWS_PAGE": 20
+    }
+  }
+}

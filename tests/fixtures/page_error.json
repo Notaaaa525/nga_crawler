@@ -1,0 +1,18 @@
+{
+  "tid": 789,
+  "page": 2,
+  "url": "https://bbs.nga.cn/read.php?tid=789&page=2&__output=11",
+  "fetched_at": "2026-10-23T13:12:00+08:00",
+  "status": "error",
+  "req_id": "789-2-error",
+  "page_type": "error",
+  "total_pages": null,
+  "current_page": 2,
+  "next_url": null,
+  "fetcher_version": "1.0.0",
+  "content": {
+    "source": "html",
+    "message": "HTTP 500 Internal Server Error",
+    "excerpt": "服务器内部错误"
+  }
+}
