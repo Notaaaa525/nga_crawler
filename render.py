@@ -14,8 +14,8 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from typing import TYPE_CHECKING, Iterable, List, Optional, Sequence
 
-if TYPE_CHECKING:  # 仅类型标注用；运行时不依赖 parser，保持模块为纯字符串处理。
-    from parser import ParsedPost
+if TYPE_CHECKING:  # 仅类型标注用；运行时不依赖解析模块，保持模块为纯字符串处理。
+    from nga_parser import ParsedPost
 
 #: 文件头分隔线（80 个 ``=``）。
 HEADER_SEPARATOR = "=" * 80

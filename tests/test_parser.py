@@ -1,4 +1,4 @@
-"""parser.py 单元测试：离线、确定性、只读 fixtures，不写任何 cache/output/logs。"""
+"""nga_parser.py 单元测试：离线、确定性、只读 fixtures，不写任何 cache/output/logs。"""
 from __future__ import annotations
 
 import copy
@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 from typing import Iterable, Iterator, List
 
-from parser import (
+from nga_parser import (
     MAX_QUOTE_DEPTH,
     MISSING_AUTHOR,
     MISSING_BODY,

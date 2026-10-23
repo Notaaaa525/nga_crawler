@@ -27,7 +27,7 @@ NGA 的帖子页接口在带 `__output=11` 时返回结构化 JSON。本项目�
 - **可读 TXT**：固定文件头、楼层分隔线、引用 `>` 前缀、`[缺失: 字段]` 占位，UTF-8 + LF；
 - **可追溯日志**：轮转 5MB × 3，`req_id` 贯穿缓存与日志，Cookie 只记录来源不记录值；
 - **两种入口**：完整 CLI，以及 Windows 快捷菜单 `run.bat`；
-- **离线测试**：183 个单元测试，含架构纪律检查（parser/render 不触网、不读写文件）。
+- **离线测试**：183 个单元测试，含架构纪律检查（nga_parser/render 不触网、不读写文件）。
 
 ## 环境要求
 
@@ -231,7 +231,7 @@ nga_crawler/
 ├── cli.py                  # argparse / 子命令 / 退出码
 ├── engine.py               # crawl / parse 两个循环、区间、state、输出编排
 ├── crawler.py              # 请求、分类、重试、原子写缓存（唯一触网模块）
-├── parser.py               # 纯函数：cache → ParsedPage
+├── nga_parser.py           # 纯函数：cache → ParsedPage（避免与 3.8/3.9 内置 parser 冲突）
 ├── render.py               # 纯函数：ParsedPage → TXT
 ├── log.py                  # 日志轮转、req_id、脱敏
 ├── run.bat                 # Windows 快捷菜单
@@ -244,9 +244,12 @@ nga_crawler/
 └── requirements.txt
 ```
 
-架构约束：依赖方向只能是 `main → cli → engine → crawler/parser/render/config/log`；
-`crawler` 是唯一直接使用 `urllib` 的模块，`parser`/`render` 不触网、不读写文件（由 AST 测试守护）；
+架构约束：依赖方向只能是 `main → cli → engine → crawler/nga_parser/render/config/log`；
+`crawler` 是唯一直接使用 `urllib` 的模块，`nga_parser`/`render` 不触网、不读写文件（由 AST 测试守护）；
 缓存、状态与输出均采用「同目录临时文件 + `os.replace`」原子写。
+
+> 命名说明：解析模块文件名为 `nga_parser.py`。Python 3.8/3.9 自带同名内置模块 `parser`，
+> 会优先于项目目录中的 `parser.py` 被导入，改名后可在 3.8+ 正常工作（CLI 子命令仍是 `parse`）。
 
 ## 测试
 
@@ -256,7 +259,7 @@ python -m unittest discover -s tests -t .
 ```
 
 - 仅使用标准库 `unittest`，全部离线、确定性、使用临时目录；
-- 覆盖 parser/render/crawler/engine/cli，以及架构 import 纪律；
+- 覆盖 nga_parser/render/crawler/engine/cli，以及架构 import 纪律；
 - `docs/cli-ux-improvements.md` 记录了 CLI 交互修复的问题清单与验收。
 
 ## 常见问题

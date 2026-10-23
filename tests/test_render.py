@@ -5,7 +5,7 @@ import json
 import unittest
 from pathlib import Path
 
-from parser import Block, ParsedPost, parse_cache
+from nga_parser import Block, ParsedPost, parse_cache
 from render import (
     HEADER_SEPARATOR,
     PLACEHOLDER_AUTHOR,

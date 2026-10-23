@@ -1,6 +1,6 @@
 """编排层：两个循环（crawl / parse）、区间解析、状态与输出。
 
-依赖方向只向下：``cli → engine → crawler/parser/render/config/log``。
+依赖方向只向下：``cli → engine → crawler/nga_parser/render/config/log``。
 engine 不直接发 HTTP，所有网络请求都经 ``crawler.fetch_page``。
 """
 from __future__ import annotations
@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any, Dict, Iterator, List, Optional, Sequence, Set, Tuple
 
 import crawler
-import parser as parser_module
+import nga_parser as parser_module
 import render
 from config import auth as auth_config
 from config import runtime as runtime_config

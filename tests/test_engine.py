@@ -586,7 +586,7 @@ class ArchitectureTest(unittest.TestCase):
         return imported
 
     def test_parser_render_have_no_network_imports(self) -> None:
-        for name in ("parser", "render"):
+        for name in ("nga_parser", "render"):
             with self.subTest(module=name):
                 forbidden = self._imports(name) & self.FORBIDDEN
                 self.assertEqual(forbidden, set(), f"{name}.py 引入了禁止模块：{forbidden}")
@@ -596,7 +596,7 @@ class ArchitectureTest(unittest.TestCase):
         self.assertEqual(forbidden, set())
 
     def test_parser_render_have_no_file_io(self) -> None:
-        for name in ("parser", "render"):
+        for name in ("nga_parser", "render"):
             tree = ast.parse((PROJECT_ROOT / f"{name}.py").read_text(encoding="utf-8"))
             for node in ast.walk(tree):
                 if isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
